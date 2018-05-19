@@ -5,8 +5,8 @@ import { bindActionCreators } from 'redux';
 
 export default connect(
   state => ({ 
-    title: state.inputToDoListReducer.title,
-    content: state.inputToDoListReducer.content
+    title: state.toDoListReducer.title,
+    content: state.toDoListReducer.content
   }),
   dispatch => bindActionCreators(Actions, dispatch)
 )(InputToDo);

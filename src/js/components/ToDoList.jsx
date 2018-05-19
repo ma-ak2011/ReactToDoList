@@ -1,4 +1,4 @@
-const ToDoList = ({ toDoList, deleteToDo, }) => {
+const ToDoList = ({ toDoList, deleteToDo }) => {
   return(
     <ul>
       {

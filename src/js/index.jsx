@@ -4,9 +4,8 @@ import { Provider } from 'react-redux';
 import { createStore, combineReducers } from 'redux';
 import App from './components/App';
 import toDoListReducer from './reducers/toDoList';
-import inputToDoListReducer from './reducers/inputToDo';
 
-const RootReducer = combineReducers({toDoListReducer, inputToDoListReducer});
+const RootReducer = combineReducers({toDoListReducer});
 
 const store = createStore(RootReducer);
 

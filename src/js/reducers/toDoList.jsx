@@ -1,4 +1,4 @@
-const initialState = { toDoList: [] };
+const initialState = { title: '', content: '', toDoList:[] };
 
 export default function toDoListReducer(state = initialState, action){
   switch (action.type) {
@@ -9,6 +9,12 @@ export default function toDoListReducer(state = initialState, action){
 
   case 'DELETE_TODO':
     return Object.assign({}, state, { toDoList: state.toDoList.filter(t => t.id !== action.id)});
+
+  case 'CHANGE_TITLE':
+    return Object.assign({}, state, { title: action.title });
+
+  case 'CHANGE_CONTENT':
+    return Object.assign({}, state, { content: action.content });
     
   default:
     return state;
