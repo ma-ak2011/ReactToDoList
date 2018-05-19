@@ -1,14 +1,7 @@
 let nextTodoId = 0;
-export const addToDo = (title, content) => ({
+export const addToDo = () => ({
   type: 'ADD_TODO',
   id: nextTodoId++,
-  title,
-  content
-});
-
-export const deleteToDo = id => ({
-  type: 'DELETE_TODO',
-  id
 });
 
 export const changeTitle = title => ({

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import ToDoList from '../components/ToDoList';
-import * as Actions from '../actions/index';
+import * as Actions from '../actions/toDoList';
 import { bindActionCreators } from 'redux';
 
 export default connect(
