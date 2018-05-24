@@ -32,7 +32,7 @@ function addToDo(payload) {
 function deleteToDo(payload) {
   return new Promise((resolve, reject) => {
     request
-      .put('http://localhost:65037/api/ReactToDoList/Delete')
+      .post('http://localhost:65037/api/ReactToDoList/Delete')
       .type('form')
       .send({ id: payload.id})
       .end((err, res) =>{
