@@ -1,13 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { createStore, combineReducers } from 'redux';
 import App from './components/App';
-import toDoListReducer from './reducers/toDoList';
+import configureStore from '../js/stores/stores';
 
-const RootReducer = combineReducers({toDoListReducer});
-
-const store = createStore(RootReducer);
+const store = configureStore();
 
 ReactDOM.render(
   <Provider store={ store }>

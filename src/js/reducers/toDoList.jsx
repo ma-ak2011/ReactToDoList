@@ -1,20 +1,29 @@
-const initialState = { title: '', content: '', toDoList:[] };
+import * as Actions from '../actions/toDoList';
+
+const initialState = { title: '', content: '', toDoList:[], error:{} };
 
 export default function toDoListReducer(state = initialState, action){
   switch (action.type) {
-  case 'ADD_TODO':
+  case Actions.SUCCESS_ADD_TODO:
     return Object.assign({}, state, {
-      toDoList: [...state.toDoList, { id: action.id, title: state.title, content: state.content }]
+      toDoList: action.payload.newToDoList
     });
 
-  case 'DELETE_TODO':
-    return Object.assign({}, state, { toDoList: state.toDoList.filter(t => t.id !== action.id)});
+  case Actions.ERROR_ADD_TODO:
+    return Object.assign({}, state, {
+      error: action.error
+    });
 
-  case 'CHANGE_TITLE':
-    return Object.assign({}, state, { title: action.title });
+  case Actions.SUCCESS_DELETE_TODO:
+    return Object.assign({}, state, {
+      toDoList: action.payload.newToDoList
+    });
 
-  case 'CHANGE_CONTENT':
-    return Object.assign({}, state, { content: action.content });
+  case Actions.CHANGE_TITLE:
+    return Object.assign({}, state, { title: action.payload.title });
+
+  case Actions.CHANGE_CONTENT:
+    return Object.assign({}, state, { content: action.payload.content });
     
   default:
     return state;

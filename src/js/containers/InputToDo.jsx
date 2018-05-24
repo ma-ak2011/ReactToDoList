@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import InputToDo from '../components/InputToDo';
-import * as Actions from '../actions/inputToDo';
+import * as Actions from '../actions/toDoList';
 import { bindActionCreators } from 'redux';
 
 export default connect(
