@@ -1,12 +1,26 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import InputToDo from '../containers/InputToDo';
 import ToDoList from '../containers/ToDoList';
+import { getToDos } from '../actions/toDoList';
 
-const App = () => (
-  <div>
-    <InputToDo />
-    <ToDoList />
-  </div>
-);
+class App extends React.Component{
+  constructor(props){
+    super(props);
+  }
 
-export default App;
+  componentDidMount(){
+    this.props.dispatch(getToDos());
+  }
+
+  render(){
+    return (
+      <div>
+        <InputToDo />
+        <ToDoList />
+      </div>
+    );
+  }
+}
+
+export default connect()(App);

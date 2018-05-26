@@ -2,6 +2,9 @@ import { delay } from 'redux-saga';
 import { select } from 'redux-saga/effects';
 import { call, put, fork, take } from 'redux-saga/effects';
 import {
+  GET_TODOS,
+  successGetToDos,
+  errorGetToDos,
   ADD_TODO,
   successAdd,
   errorAdd,
@@ -13,12 +16,12 @@ import API from '../api/api';
 
 function* handleGetToDos() {
   while (true) {
-    const { payload } = yield take(ADD_TODO);
+    const { payload } = yield take(GET_TODOS);
     const { text, error } = yield call(API.getToDos, {});
     if (text && !error) {
-      yield put(successAdd({ newToDoList: (JSON.parse(text)).UserList }));
+      yield put(successGetToDos({ newToDoList: (JSON.parse(text)).UserList }));
     } else {
-      yield put(errorAdd({ error }));
+      yield put(errorGetToDos({ error }));
     }
   }
 }
@@ -53,6 +56,7 @@ function* handleDeleteToDo() {
 }
 
 export default function* rootSaga() {
+  yield fork(handleGetToDos);
   yield fork(handleAddToDo);
   yield fork(handleDeleteToDo);
 }
