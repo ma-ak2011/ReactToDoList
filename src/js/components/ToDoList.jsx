@@ -4,9 +4,9 @@ const ToDoList = ({ toDoList, deleteToDo }) => {
       {
         toDoList.map((m, i) => {
           return <li key={i}>
-            タイトル：{m.title}<br/>
+            タイトル：{m.title}  No.{m.id}<br/>
             内容：{m.content}<br/>
-            <button onClick={e => deleteToDo(m.id)}>削除{m.id}</button>
+            <button onClick={e => deleteToDo(m.id)}>削除</button>
           </li>;
         })
       }

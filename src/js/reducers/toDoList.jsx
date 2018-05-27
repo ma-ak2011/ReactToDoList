@@ -4,19 +4,21 @@ const initialState = { title: '', content: '', toDoList:[], error:{} };
 
 export default function toDoListReducer(state = initialState, action){
   switch (action.type) {
-    case Actions.SUCCESS_GET_TODOS:
+  case Actions.SUCCESS_GET_TODOS:
     return Object.assign({}, state, {
       toDoList: action.payload.newToDoList
     });
 
-    case Actions.ERROR_GET_TODOS:
+  case Actions.ERROR_GET_TODOS:
     return Object.assign({}, state, {
       error: action.error
     });
 
   case Actions.SUCCESS_ADD_TODO:
     return Object.assign({}, state, {
-      toDoList: action.payload.newToDoList
+      toDoList: action.payload.newToDoList,
+      title: '',
+      content: ''
     });
 
   case Actions.ERROR_ADD_TODO:

@@ -4,9 +4,9 @@ const InputToDo = ({ title, content, changeTitle, changeContent, addToDo }) => {
       <div>
         タイトル：<input type="text" value={title} onChange={e => changeTitle(e.target.value)}/>
         <br/>
-        内容：<textArea value={content} onChange={e => changeContent(e.target.value)}/>
+        内容：<input type="text" value={content} onChange={e => changeContent(e.target.value)}/>
       </div>
-      <div onClick={e => addToDo()}>追加</div>
+      <input type='button' onClick={e => addToDo()} value='追加'/>
     </div>
   );
 };
