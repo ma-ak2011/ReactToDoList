@@ -1,12 +1,12 @@
 var path = require('path');
 var webpack = require('webpack');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
+//var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = [
     {
         context: path.join(__dirname, 'src/js'),
         entry: {
-            app2: './index.jsx'
+            app: './index.jsx'
         },
         output: {
             path: path.join(__dirname, 'public/js'),
@@ -17,9 +17,9 @@ module.exports = [
                 {
                     test: /\.js[x]?$/,
                     exclude: /node_modules/,
-                    loader: 'babel-loader',
+                    loader: "babel-loader",
                     query:{
-                        presets: ['react', 'es2017']
+                        presets: ['react', 'env']
                     }
                 }
             ]
@@ -38,7 +38,7 @@ module.exports = [
             filename: '[name].css'
         },
         module: {
-            loaders: [
+            rules: [
                 {
                     test: /\.scss$/,
                     loader: ExtractTextPlugin.extract('style-loader', 'css-loader?-url&sourceMap&minimize!sass-loader?outputStyle=expanded&sourceMap=true&sourceMapContents=true')

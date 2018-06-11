@@ -14,7 +14,7 @@
  */
 module.exports = {
     "ui": {
-        "port": 3001
+        "port": 5000
     },
     "files": "./public/**/*",
     "watchEvents": [
@@ -27,10 +27,10 @@ module.exports = {
         "ignoreInitial": true
     },
     "server": {
-                      "baseDir": "./public"
-                  },
+        "baseDir": "./public"
+    },
     "proxy": false,
-    "port": 3000,
+    "port": 4000,
     "middleware": false,
     "serveStatic": [],
     "ghostMode": {
@@ -105,5 +105,6 @@ module.exports = {
         "svg": "img",
         "gif": "img",
         "js": "script"
-    }
+    },
+    "injectNotification": false
 };

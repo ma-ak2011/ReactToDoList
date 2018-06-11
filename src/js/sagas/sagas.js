@@ -48,7 +48,7 @@ function* handleDeleteToDo() {
 
     const response = yield call(API.getToDos, {});
     if (response.text && !response.error) {
-      yield put(successAdd({ newToDoList: (JSON.parse(response.text)).UserList }));
+      yield put(successDelete({ newToDoList: (JSON.parse(response.text)).UserList }));
     } else {
       yield put(errorDelete({ error }));
     }

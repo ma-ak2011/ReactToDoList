@@ -1,3 +1,5 @@
+import React            from 'react'
+
 const InputToDo = ({ title, content, changeTitle, changeContent, addToDo }) => {
   return(
     <div>

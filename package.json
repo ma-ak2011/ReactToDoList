@@ -1,44 +1,63 @@
 {
-  "name": "test2",
+  "name": "reacttodolist",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": ".eslintrc.js",
+  "dependencies": {
+    "eslint": "^4.19.1",
+    "npm": "^6.1.0",
+    "react": "^16.4.0",
+    "react-dom": "^16.4.0",
+    "react-redux": "^5.0.7",
+    "redux": "^4.0.0",
+    "redux-actions": "^2.4.0",
+    "redux-logger": "^3.0.6",
+    "redux-saga": "^0.16.0",
+    "superagent": "^3.8.3"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "babel-register": "^6.26.0",
+    "browser-sync": "^2.24.4",
+    "chai": "^4.1.2",
+    "concurrently": "^3.5.1",
+    "css-loader": "^0.28.11",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "jsdom": "^11.11.0",
+    "mocha": "^5.2.0",
+    "node-sass": "^4.9.0",
+    "sass-loader": "^7.0.3",
+    "sinon": "^5.1.1",
+    "style-loader": "^0.21.0",
+    "webpack": "^4.12.0",
+    "webpack-cli": "^3.0.3"
+  },
+  "babel": {
+    "presets": [
+      "env",
+      "react"
+    ]
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha --compilers js:babel-core/register --require  test/setup.js  test/**/*.spec.js",
     "build": "webpack -p --progress",
     "watch": "webpack -d --watch --progress",
     "browsersync": "browser-sync start --config bs-config.js",
     "start": "concurrent \"npm run watch\" \"npm run browsersync\""
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ma-ak2011/ReactToDoList.git"
+  },
+  "keywords": [],
   "author": "",
   "license": "ISC",
-  "devDependencies": {
-    "babel-core": "^6.26.3",
-    "babel-loader": "^7.1.4",
-    "babel-preset-es2017": "^6.24.1",
-    "babel-preset-react": "^6.24.1",
-    "browser-sync": "^2.23.7",
-    "concurrently": "^3.5.1",
-    "css-loader": "^0.28.11",
-    "eslint": "^4.19.1",
-    "eslint-plugin-react": "^7.7.0",
-    "extract-text-webpack-plugin": "^3.0.2",
-    "node-sass": "^4.9.0",
-    "sass-loader": "^7.0.1",
-    "style-loader": "^0.21.0",
-    "webpack": "^4.6.0",
-    "webpack-cli": "^2.0.15"
+  "bugs": {
+    "url": "https://github.com/ma-ak2011/ReactToDoList/issues"
   },
-  "dependencies": {
-    "npm": "^6.0.1",
-    "react": "^16.3.2",
-    "react-bootstrap": "^0.32.1",
-    "react-dom": "^16.3.2",
-    "react-redux": "^5.0.7",
-    "redux": "^4.0.0",
-    "redux-actions": "^2.3.2",
-    "redux-logger": "^3.0.6",
-    "redux-saga": "^0.16.0",
-    "superagent": "^3.8.2"
-  }
+  "homepage": "https://github.com/ma-ak2011/ReactToDoList#readme"
 }
