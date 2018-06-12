@@ -1,4 +1,5 @@
 import { delay } from 'redux-saga';
+import 'babel-polyfill';
 import { select } from 'redux-saga/effects';
 import { call, put, fork, take } from 'redux-saga/effects';
 import {
