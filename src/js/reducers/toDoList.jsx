@@ -1,6 +1,6 @@
 import * as Actions from '../actions/toDoList';
 
-const initialState = { title: '', content: '', toDoList:[], error:{} };
+export const initialState = { title: '', content: '', toDoList:[], error:{} };
 
 export default function toDoListReducer(state = initialState, action){
   switch (action.type) {

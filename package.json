@@ -16,8 +16,10 @@
     "superagent": "^3.8.3"
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.4",
+    "babel-plugin-istanbul": "^4.1.6",
     "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
@@ -25,12 +27,15 @@
     "browser-sync": "^2.24.4",
     "chai": "^4.1.2",
     "concurrently": "^3.5.1",
+    "cross-env": "^5.1.6",
     "css-loader": "^0.28.11",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
+    "istanbul": "^0.4.5",
     "jsdom": "^11.11.0",
     "mocha": "^5.2.0",
     "node-sass": "^4.9.0",
+    "nyc": "^12.0.2",
     "sass-loader": "^7.0.3",
     "sinon": "^5.1.1",
     "style-loader": "^0.21.0",
@@ -41,11 +46,31 @@
     "presets": [
       "env",
       "react"
-    ]
+    ],
+    "env": {
+      "test": {
+        "plugins": [
+          "istanbul"
+        ]
+      }
+    }
+  },
+  "nyc": {
+    "require": [
+      "babel-register"
+    ],
+    "reporter": [
+      "lcov",
+      "text"
+    ],
+    "sourceMap": false,
+    "instrument": false
   },
   "scripts": {
     "test": "mocha --compilers js:babel-core/register --require  test/setup.js  test/**/*.spec.js",
+    "test-with-coverage": "cross-env NODE_ENV=test nyc mocha test/**/*.spec.js --compilers js:babel-core/register --require test/setup.js",
     "build": "webpack -p --progress",
+    "prepublish": "npm run build",
     "watch": "webpack -d --watch --progress",
     "browsersync": "browser-sync start --config bs-config.js",
     "start": "concurrent \"npm run watch\" \"npm run browsersync\""
