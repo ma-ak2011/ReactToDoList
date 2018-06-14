@@ -17,6 +17,11 @@ describe('<InputToDo />', () => {
     expect(wrapper.text()).to.contain('内容：');
   });
 
+  it('should render 追加', () => {
+    const wrapper = render(<InputToDo />);
+    expect(wrapper.find('input[type="button"]').val()).to.contain('追加');
+  });
+
   it('allows us to set title たいとる', () => {
     const wrapper = mount(<InputToDo title='たいとる'/>);
     expect(wrapper.props().title).to.equals('たいとる');
@@ -40,29 +45,29 @@ describe('<InputToDo />', () => {
     expect(onChangeTitle.getCall(0).args[0]).to.equals('タイトルが変更されました');
   });
 
-  
+  it('responds to content change and argumet equals コンテントが変更されました', () => {
+    
+    const onChangeContent = sinon.spy();
+    const wrapper = mount((
+      <InputToDo changeContent={onChangeContent} />
+    ));
+    const input = wrapper.find('input').at(1);
+    input.simulate('change', {target: {value: "コンテントが変更されました"}});
 
-  /*it('should render an `.icon-star`', () => {
-    const wrapper = shallow(<App />);
-    expect(wrapper.find('.icon-star')).to.have.length(1);
+    expect(onChangeContent.calledOnce).to.equal(true);
+    expect(onChangeContent.getCall(0).args[0]).to.equals('コンテントが変更されました');
   });
 
-  it('should render children when passed in', () => {
-    const wrapper = shallow(
-      <App>
-        <div className="unique" />
-      </App>
-    );
-    expect(wrapper.contains(<div className="unique" />)).to.be.true;
-  });
+  it('responds to button click', () => {
+    
+    const onAddToDo = sinon.spy();
+    const wrapper = mount((
+      <InputToDo addToDo={onAddToDo} />
+    ));
+    const input = wrapper.find('input[type="button"]').at(0);
+    input.simulate('click');
 
-  it('simulates click events', () => {
-    const onButtonClick = sinon.spy();
-    const wrapper = shallow(
-      <Foo onButtonClick={onButtonClick} />
-    );
-    wrapper.find('button').simulate('click');
-    expect(onButtonClick.calledOnce).to.be.true;
-  });*/
+    expect(onAddToDo.calledOnce).to.equal(true);
+  });
 
 });
