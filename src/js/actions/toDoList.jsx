@@ -21,8 +21,8 @@ export const getToDos = () => ({
   error: false
 });
 
-export const successGetToDos = createAction(SUCCESS_ADD_TODO);
-export const errorGetToDos = createAction(ERROR_ADD_TODO);
+export const successGetToDos = createAction(SUCCESS_GET_TODOS);
+export const errorGetToDos = createAction(SUCCESS_GET_TODOS);
 
 export const addToDo = () => ({
   type: ADD_TODO,

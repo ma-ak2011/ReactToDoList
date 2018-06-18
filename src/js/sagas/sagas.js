@@ -20,7 +20,7 @@ function* handleGetToDos() {
     const { payload } = yield take(GET_TODOS);
     const { text, error } = yield call(API.getToDos, {});
     if (text && !error) {
-      yield put(successGetToDos({ newToDoList: (JSON.parse(text)).UserList }));
+      yield put(successGetToDos({ newToDoList: (JSON.parse(text)).todos}));
     } else {
       yield put(errorGetToDos({ error }));
     }
@@ -35,7 +35,7 @@ function* handleAddToDo() {
 
     const response = yield call(API.getToDos, {});
     if (response.text && !response.error) {
-      yield put(successAdd({ newToDoList: (JSON.parse(response.text)).UserList }));
+      yield put(successAdd({ newToDoList: (JSON.parse(response.text)).todos}));
     } else {
       yield put(errorAdd({ error }));
     }
@@ -49,7 +49,7 @@ function* handleDeleteToDo() {
 
     const response = yield call(API.getToDos, {});
     if (response.text && !response.error) {
-      yield put(successDelete({ newToDoList: (JSON.parse(response.text)).UserList }));
+      yield put(successDelete({ newToDoList: (JSON.parse(response.text)).todos }));
     } else {
       yield put(errorDelete({ error }));
     }

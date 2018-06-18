@@ -3,7 +3,7 @@ import request from 'superagent';
 function getToDos(payload) {
   return new Promise((resolve, reject) => {
     request
-      .get('http://localhost:65037/api/ReactToDoList/GetToDos')
+      .get('http://localhost:3000/react_to_do_list')
       .send({})
       .end((err, res) =>{
         if(err)
@@ -17,7 +17,7 @@ function getToDos(payload) {
 function addToDo(payload) {
   return new Promise((resolve, reject) => {
     request
-      .post('http://localhost:65037/api/ReactToDoList/Add')
+      .post('http://localhost:3000/react_to_do_list')
       .type('form')
       .send({ title: payload.title, content: payload.content })
       .end((err, res) =>{
@@ -32,9 +32,8 @@ function addToDo(payload) {
 function deleteToDo(payload) {
   return new Promise((resolve, reject) => {
     request
-      .post('http://localhost:65037/api/ReactToDoList/Delete')
-      .type('form')
-      .send({ id: payload.id})
+      .delete('http://localhost:3000/react_to_do_list/' + payload.id)
+      .send()
       .end((err, res) =>{
         if(err)
           reject(err);
